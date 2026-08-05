@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitVision AI - Health Intelligence Platform Blueprint</title>
+    <title>FitVision AI - Ecosystem Architecture</title>
     <style>
         * {
             box-sizing: border-box;
@@ -48,29 +48,6 @@
             margin: 0 auto 30px;
         }
         
-        /* 📱 App Gallery (الصور المحلية من ملف التوثيق) */
-        .app-gallery {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin-bottom: 50px;
-        }
-        .app-gallery img {
-            width: 220px;
-            height: auto;
-            border-radius: 16px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-            border: 2px solid #243044;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            object-fit: cover;
-        }
-        .app-gallery img:hover {
-            transform: translateY(-10px) scale(1.05);
-            border-color: #a3e635;
-        }
-
-        /* 📊 الأقسام الجديدة المستوحاة من الـ Blueprint */
         .section-title {
             color: #ffffff;
             font-size: 1.8rem;
@@ -90,6 +67,11 @@
             padding: 22px;
             border-radius: 16px;
             border: 1px solid #243044;
+            transition: transform 0.2s;
+        }
+        .pillar-card:hover {
+            transform: translateY(-4px);
+            border-color: #a3e635;
         }
         .pillar-card h3 {
             color: #38bdf8;
@@ -125,7 +107,6 @@
             margin-top: 5px;
         }
 
-        /* 🗄️ جدول قاعدة البيانات والهندسة */
         .db-table {
             width: 100%;
             border-collapse: collapse;
@@ -191,7 +172,6 @@
             margin-bottom: 30px;
         }
 
-        /* 🎵 شريط الصوت العائم */
         .audio-player-bar {
             position: fixed;
             bottom: 20px;
@@ -239,13 +219,6 @@
             <h1>FitVision AI</h1>
             <p class="subtitle">A 100% Real, Multi-Language, and Extensible Health Intelligence Platform powered by advanced computer vision.</p>
         </header>
-
-        <h2 style="text-align: center; margin-bottom: 20px; color: #fff;">App Blueprint Interfaces</h2>
-        <div class="app-gallery">
-            <img src="2991.jpg" alt="FitVision UI Screen 1">
-            <img src="2992.jpg" alt="FitVision UI Screen 2">
-            <img src="2993.jpg" alt="FitVision UI Screen 3">
-        </div>
 
         <div class="metrics">
             <div class="metric-card">
