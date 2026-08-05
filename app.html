@@ -235,5 +235,147 @@
             <div class="pillar-card">
                 <h3>📅 Booking & Schedule</h3>
                 <p>High-concurrency booking engine with real-time class availability using atomic Redis locking.</p>
+            </div>
+            <div class="pillar-card">
+                <h3>🌐 Full i18n Support</h3>
+                <p>Modular internationalization allowing dynamic language switching for UI, recipes, and coach guidance.</p>
+            </div>
+            <div class="pillar-card">
+                <h3>🎯 Visual Goal Projection</h3>
+                <p>"Dream Body" visualization using reference physique imagery and progress-tracking health onboarding.</p>
+            </div>
+        </div>
 
-                
+        <h2 class="section-title">Core Database Schema</h2>
+        <table class="db-table">
+            <thead>
+                <tr>
+                    <th>Entity</th>
+                    <th>Key Attributes</th>
+                    <th>Primary Function</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>User_Profile</strong></td>
+                    <td>Height, Weight, Activity_Level, Dream_Body_URL</td>
+                    <td>Personalized health baselines and projections.</td>
+                </tr>
+                <tr>
+                    <td><strong>Meal_Log</strong></td>
+                    <td>Image_ID, Calories, Macros_JSON, Confidence_Score</td>
+                    <td>Nutrition history and AI vision feedback loop.</td>
+                </tr>
+                <tr>
+                    <td><strong>Class_Booking</strong></td>
+                    <td>Class_ID, Slot_Time, Capacity_Remaining, Status</td>
+                    <td>Atomic booking management for gym services.</td>
+                </tr>
+                <tr>
+                    <td><strong>Wearable_Sync</strong></td>
+                    <td>Device_Type, HealthKit_ID, Step_Data, BPM</td>
+                    <td>Extensible API layer for third-party integrations.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="rating-box">
+            <h2>Rate AuraRM & Send Feedback</h2>
+            <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 10px;">Select stars and write your review or issue below to send it directly to your email.</p>
+            
+            <div class="stars-container" id="starContainer">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+
+            <textarea id="reviewInput" placeholder="Write your feedback, experience, or any issue here..."></textarea>
+            <br>
+            <button class="submit-btn" onclick="sendRatingToEmail()">Submit Rating & Feedback ✉️</button>
+        </div>
+
+        <div class="tech-box">
+            <h2>Technology Stack & Infrastructure</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter (Mobile App)</span>
+                <span class="tech-tag">NestJS / Node.js (Backend)</span>
+                <span class="tech-tag">PostgreSQL & Redis (Database)</span>
+                <span class="tech-tag">AWS / GCP Cloud Native</span>
+                <span class="tech-tag">OpenAI GPT-4o Vision</span>
+            </div>
+        </div>
+
+        <div class="footer-action">
+            <a href="https://aurarm.com" class="back-btn">Visit AuraRM</a>
+        </div>
+    </div>
+
+    <script>
+        // Robust Interaction-based Audio Trigger Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('bgAudio');
+            audio.volume = 0.5;
+
+            const startAudio = () => {
+                audio.play().then(() => {
+                    // Remove listeners once playback successfully initiates
+                    window.removeEventListener('click', startAudio);
+                    window.removeEventListener('touchstart', startAudio);
+                    window.removeEventListener('keydown', startAudio);
+                    window.removeEventListener('mousemove', startAudio);
+                }).catch(err => {
+                    console.log("Audio waiting for user gesture:", err);
+                });
+            };
+
+            // Bind to multiple potential user triggers
+            window.addEventListener('click', startAudio);
+            window.addEventListener('touchstart', startAudio);
+            window.addEventListener('keydown', startAudio);
+            window.addEventListener('mousemove', startAudio);
+
+            // Immediate silent attempt
+            audio.play().catch(() => {});
+        });
+
+        // Interactive Star Rating Logic
+        let selectedRating = 0;
+        const stars = document.querySelectorAll('.star');
+
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = star.getAttribute('data-value');
+                stars.forEach(s => {
+                    if (s.getAttribute('data-value') <= selectedRating) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Send Rating and Review to Email function
+        function sendRatingToEmail() {
+            const reviewText = document.getElementById('reviewInput').value.trim();
+            if (selectedRating === 0) {
+                alert('Please select at least one star to rate the app.');
+                return;
+            }
+            if (!reviewText) {
+                alert('Please type your feedback or issue description.');
+                return;
+            }
+
+            const myEmail = 'rayaneking20111@gmail.com'; 
+            const subject = encodeURIComponent(`AuraRM - App Rating: ${selectedRating} / 5 Stars`);
+            const body = encodeURIComponent(`Platform: AuraRM\nApp Rating: ${selectedRating} Stars out of 5\n\nFeedback / Issue Details:\n${reviewText}`);
+            
+            window.location.href = `mailto:${myEmail}?subject=${subject}&body=${body}`;
+        }
+    </script>
+
+</body>
+</html>
