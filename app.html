@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitVision AI - Ecosystem Architecture & Feedback</title>
+    <title>FitVision AI - Ecosystem Architecture & App Rating</title>
     <style>
         * {
             box-sizing: border-box;
@@ -16,7 +16,7 @@
             color: #e2e8f0;
             line-height: 1.6;
             padding: 20px;
-            padding-bottom: 40px;
+            padding-bottom: 50px;
         }
         .container {
             max-width: 950px;
@@ -106,22 +106,39 @@
             color: #cbd5e1;
         }
 
-        /* Report Problem Box */
-        .report-box {
+        /* App Rating Interface */
+        .rating-box {
             background: #161f2e;
             padding: 30px;
             border-radius: 16px;
             border: 1px solid #243044;
             margin-bottom: 40px;
+            text-align: center;
         }
-        .report-box h2 {
+        .rating-box h2 {
             color: #ffffff;
-            margin-bottom: 15px;
-            font-size: 1.5rem;
+            margin-bottom: 10px;
+            font-size: 1.6rem;
         }
-        .report-box textarea {
+        .stars-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+        }
+        .star {
+            font-size: 2.5rem;
+            color: #334155;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .star.active, .star:hover {
+            color: #facc15;
+        }
+        .rating-box textarea {
             width: 100%;
-            height: 120px;
+            max-width: 700px;
+            height: 100px;
             background: #0b0f17;
             border: 1px solid #334155;
             border-radius: 10px;
@@ -129,24 +146,25 @@
             color: #fff;
             font-size: 1rem;
             resize: vertical;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            text-align: left;
         }
-        .report-box textarea:focus {
+        .rating-box textarea:focus {
             outline: none;
             border-color: #a3e635;
         }
-        .report-btn {
+        .submit-btn {
             background: #a3e635;
             color: #0b0f17;
             border: none;
-            padding: 12px 25px;
+            padding: 12px 30px;
             border-radius: 10px;
             font-weight: bold;
             font-size: 1rem;
             cursor: pointer;
             transition: background 0.2s;
         }
-        .report-btn:hover {
+        .submit-btn:hover {
             background: #bef264;
         }
 
@@ -198,7 +216,7 @@
 
     <div class="container">
         <header>
-            <span class="badge">Ecosystem Architecture & Feedback</span>
+            <span class="badge">Ecosystem Architecture & App Rating</span>
             <h1>FitVision AI</h1>
             <p class="subtitle">A 100% Real, Multi-Language, and Extensible Health Intelligence Platform powered by advanced computer vision.</p>
         </header>
@@ -256,12 +274,21 @@
             </tbody>
         </table>
 
-        <div class="report-box">
-            <h2>Report an Issue / Bug</h2>
-            <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 15px;">Encountered any problem? Type the details below and click the button to send it directly to your email.</p>
-            <textarea id="problemInput" placeholder="Describe the problem or issue here..."></textarea>
+        <div class="rating-box">
+            <h2>Rate Our App & Send Feedback</h2>
+            <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 10px;">Select stars and write your review or issue below to send it directly to your email.</p>
+            
+            <div class="stars-container" id="starContainer">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+
+            <textarea id="reviewInput" placeholder="Write your feedback, experience, or any issue here..."></textarea>
             <br>
-            <button class="report-btn" onclick="sendProblemToEmail()">Send Issue to My Email ✉️</button>
+            <button class="submit-btn" onclick="sendRatingToEmail()">Submit Rating & Feedback ✉️</button>
         </div>
 
         <div class="tech-box">
@@ -280,30 +307,42 @@
         </div>
     </div>
 
-    <audio id="bgAudio" autoplay loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=relaxing-mountains-rivers-113747.mp3"></audio>
-
     <script>
-        // Send problem details to email function
-        function sendProblemToEmail() {
-            const problemText = document.getElementById('problemInput').value.trim();
-            if(!problemText) {
-                alert('Please type the problem details first.');
+        // Interactive Star Rating Logic
+        let selectedRating = 0;
+        const stars = document.querySelectorAll('.star');
+
+        stars.forEach(star => {
+            star.addEventListener('click', () => {
+                selectedRating = star.getAttribute('data-value');
+                stars.forEach(s => {
+                    if (s.getAttribute('data-value') <= selectedRating) {
+                        s.classList.add('active');
+                    } else {
+                        s.classList.remove('active');
+                    }
+                });
+            });
+        });
+
+        // Send Rating and Review to Email function
+        function sendRatingToEmail() {
+            const reviewText = document.getElementById('reviewInput').value.trim();
+            if (selectedRating === 0) {
+                alert('Please select at least one star to rate the app.');
                 return;
             }
+            if (!reviewText) {
+                alert('Please type your feedback or issue description.');
+                return;
+            }
+
             const myEmail = 'rayaneking20111@gmail.com'; 
-            const subject = encodeURIComponent('FitVision AI App - Bug / Issue Report');
-            const body = encodeURIComponent('Issue Details:\n\n' + problemText);
+            const subject = encodeURIComponent(`FitVision AI - App Rating: ${selectedRating} / 5 Stars`);
+            const body = encodeURIComponent(`App Rating: ${selectedRating} Stars out of 5\n\nFeedback / Issue Details:\n${reviewText}`);
             
             window.location.href = `mailto:${myEmail}?subject=${subject}&body=${body}`;
         }
-
-        // Attempt to autoplay audio when page loads
-        window.addEventListener('DOMContentLoaded', () => {
-            const audio = document.getElementById('bgAudio');
-            audio.play().catch(error => {
-                console.log("Browser policy blocked autoplay until user interaction:", error);
-            });
-        });
     </script>
 
 </body>
