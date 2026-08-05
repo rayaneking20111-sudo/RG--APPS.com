@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitVision AI - AI Health Platform </title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #0b0f17;
+            color: #e2e8f0;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        header {
+            text-align: center;
+            padding: 40px 0 20px;
+        }
+        .badge {
+            background: rgba(163, 230, 53, 0.15);
+            color: #a3e635;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 15px;
+            border: 1px solid rgba(163, 230, 53, 0.3);
+        }
+        h1 {
+            font-size: 2.8rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: #94a3b8;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        /* Metrics Section */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .metric-card {
+            background: #161f2e;
+            padding: 25px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid #243044;
+        }
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #a3e635;
+        }
+        .metric-label {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            margin-top: 5px;
+        }
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .feature-card {
+            background: #161f2e;
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid #243044;
+            transition: transform 0.2s;
+        }
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #a3e635;
+        }
+        .feature-card h3 {
+            color: #38bdf8;
+            margin-bottom: 10px;
+            font-size: 1.25rem;
+        }
+        .feature-card p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+        }
+        /* Tech Stack */
+        .tech-box {
+            background: #161f2e;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #243044;
+            margin-bottom: 40px;
+        }
+        .tech-box h2 {
+            color: #ffffff;
+            margin-bottom: 15px;
+        }
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .tech-tag {
+            background: #243044;
+            color: #e2e8f0;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+        }
+        /* Back Button */
+        .back-btn {
+            display: inline-block;
+            background: #a3e635;
+            color: #0b0f17;
+            padding: 12px 28px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        .back-btn:hover {
+            background: #bef264;
+        }
+        .footer-action {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <span class="badge">RG--APPS Showcase</span>
+            <h1>FitVision AI</h1>
+            <p class="subtitle">A comprehensive artificial intelligence platform for immediate nutrition and fitness analysis and meal evaluation .</p>
+        </header>
+
+        <div class="metrics">
+            <div class="metric-card">
+                <div class="metric-value">92%</div>
+                <div class="metric-label">Accuracy of AI Nutrition Analysis </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">3s</div>
+                <div class="metric-label">Meal photo processing time </div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">+50%</div>
+                <divclass="metric-label">Increased continuity of users</div>
+            </div>
+        </div>
+
+        <h2 style="margin-bottom: 20px; color: #fff;">Leading features </h2>
+        <div class="features">
+            <div class="feature-card">
+                <h3>📷 AI Vision Tracking</h3>
+                <p>Instant estimation of calories and nutritional values through image analysis using a phone camera and linking to databases .</p>
+            </div>
+            <div class="feature-card">
+                <h3>📅 Booking & Schedule</h3>
+                <p>Quick booking machine for sports classes and activities with direct updates to available seats .</p>
+            </div>
+            <div class="feature-card">
+                <h3>🌐 Full i18n Support</h3>
+                <p>Full multilingual support for interfaces, recipes, and instructor guidance .</p>
+            </div>
+            <div class="feature-card">
+                <h3>🎯 Visual Goal Projection</h3>
+                <p>Visual embodiment of body objectives and enhancing user fitness by tracking periodic development .</p>
+            </div>
+        </div>
+
+        <div class="tech-box">
+            <h2>techniques uesd(Tech Stack)</h2>
+            <div class="tech-tags">
+                <span class="tech-tag">Flutter (120 FPS)</span>
+                <span class="tech-tag">NestJS / Node.js</span>
+                <span class="tech-tag">OpenAI GPT-4o Vision</span>
+                <span class="tech-tag">PostgreSQL & Redis</span>
+            </div>
+        </div>
+
+        <div class="footer-action">
+            <a href="index.html" class="back-btn">Go back</a>
+        </div>
+    </div>
+
+</body>
+</html>
