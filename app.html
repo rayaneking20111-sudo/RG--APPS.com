@@ -16,7 +16,7 @@
             color: #e2e8f0;
             line-height: 1.6;
             padding: 20px;
-            padding-bottom: 90px;
+            padding-bottom: 40px;
         }
         .container {
             max-width: 950px;
@@ -192,51 +192,13 @@
             margin-top: 20px;
             margin-bottom: 30px;
         }
-
-        .audio-player-bar {
-            position: fixed;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(22, 31, 46, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(163, 230, 53, 0.3);
-            padding: 10px 24px;
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            z-index: 1000;
-        }
-        .audio-title {
-            font-size: 0.9rem;
-            color: #cbd5e1;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .audio-btn {
-            background: #a3e635;
-            color: #0b0f17;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .audio-btn:hover {
-            background: #bef264;
-            transform: scale(1.05);
-        }
     </style>
 </head>
 <body>
 
     <div class="container">
         <header>
-            <span class="badge">Ecosystem Architecture & Blueprint</span>
+            <span class="badge">Ecosystem Architecture & Feedback</span>
             <h1>FitVision AI</h1>
             <p class="subtitle">A 100% Real, Multi-Language, and Extensible Health Intelligence Platform powered by advanced computer vision.</p>
         </header>
@@ -318,13 +280,7 @@
         </div>
     </div>
 
-    <div class="audio-player-bar">
-        <div class="audio-title">
-            <span>🧘</span> Relaxing Melody
-        </div>
-        <button class="audio-btn" id="musicToggleBtn" onclick="toggleAudio()">Play Music 🎵</button>
-        <audio id="relaxAudio" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=relaxing-mountains-rivers-113747.mp3"></audio>
-    </div>
+    <audio id="bgAudio" autoplay loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=relaxing-mountains-rivers-113747.mp3"></audio>
 
     <script>
         // Send problem details to email function
@@ -334,7 +290,6 @@
                 alert('Please type the problem details first.');
                 return;
             }
-            // Your email address
             const myEmail = 'rayaneking20111@gmail.com'; 
             const subject = encodeURIComponent('FitVision AI App - Bug / Issue Report');
             const body = encodeURIComponent('Issue Details:\n\n' + problemText);
@@ -342,23 +297,13 @@
             window.location.href = `mailto:${myEmail}?subject=${subject}&body=${body}`;
         }
 
-        // Audio toggle controller
-        const audio = document.getElementById('relaxAudio');
-        const btn = document.getElementById('musicToggleBtn');
-
-        function toggleAudio() {
-            if (audio.paused) {
-                audio.play();
-                btn.textContent = 'Pause ⏸️';
-                btn.style.background = '#ff4757';
-                btn.style.color = '#fff';
-            } else {
-                audio.pause();
-                btn.textContent = 'Play Music 🎵';
-                btn.style.background = '#a3e635';
-                btn.style.color = '#0b0f17';
-            }
-        }
+        // Attempt to autoplay audio when page loads
+        window.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('bgAudio');
+            audio.play().catch(error => {
+                console.log("Browser policy blocked autoplay until user interaction:", error);
+            });
+        });
     </script>
 
 </body>
