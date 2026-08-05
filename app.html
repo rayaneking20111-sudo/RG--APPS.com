@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FitVision AI - Ecosystem Architecture</title>
+    <title>FitVision AI - Ecosystem Architecture & Feedback</title>
     <style>
         * {
             box-sizing: border-box;
@@ -83,30 +83,6 @@
             font-size: 0.9rem;
         }
 
-        .metrics {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 40px;
-        }
-        .metric-card {
-            background: #161f2e;
-            padding: 25px;
-            border-radius: 16px;
-            text-align: center;
-            border: 1px solid #243044;
-        }
-        .metric-value {
-            font-size: 2.5rem;
-            font-weight: bold;
-            color: #a3e635;
-        }
-        .metric-label {
-            color: #94a3b8;
-            font-size: 0.95rem;
-            margin-top: 5px;
-        }
-
         .db-table {
             width: 100%;
             border-collapse: collapse;
@@ -128,6 +104,50 @@
         }
         .db-table td {
             color: #cbd5e1;
+        }
+
+        /* Report Problem Box */
+        .report-box {
+            background: #161f2e;
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid #243044;
+            margin-bottom: 40px;
+        }
+        .report-box h2 {
+            color: #ffffff;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        .report-box textarea {
+            width: 100%;
+            height: 120px;
+            background: #0b0f17;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 15px;
+            color: #fff;
+            font-size: 1rem;
+            resize: vertical;
+            margin-bottom: 15px;
+        }
+        .report-box textarea:focus {
+            outline: none;
+            border-color: #a3e635;
+        }
+        .report-btn {
+            background: #a3e635;
+            color: #0b0f17;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .report-btn:hover {
+            background: #bef264;
         }
 
         .tech-box {
@@ -155,8 +175,8 @@
         }
         .back-btn {
             display: inline-block;
-            background: #a3e635;
-            color: #0b0f17;
+            background: #243044;
+            color: #e2e8f0;
             padding: 12px 28px;
             border-radius: 10px;
             text-decoration: none;
@@ -164,7 +184,8 @@
             transition: background 0.2s;
         }
         .back-btn:hover {
-            background: #bef264;
+            background: #334155;
+            color: #fff;
         }
         .footer-action {
             text-align: center;
@@ -220,21 +241,6 @@
             <p class="subtitle">A 100% Real, Multi-Language, and Extensible Health Intelligence Platform powered by advanced computer vision.</p>
         </header>
 
-        <div class="metrics">
-            <div class="metric-card">
-                <div class="metric-value">120 FPS</div>
-                <div class="metric-label">Flutter UI Performance</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value">GPT-4o</div>
-                <div class="metric-label">Vision Inference Engine</div>
-            </div>
-            <div class="metric-card">
-                <div class="metric-value">Redis</div>
-                <div class="metric-label">High-Concurrency Booking</div>
-            </div>
-        </div>
-
         <h2 class="section-title">Four Pillars of the Platform</h2>
         <div class="pillars-grid">
             <div class="pillar-card">
@@ -288,6 +294,14 @@
             </tbody>
         </table>
 
+        <div class="report-box">
+            <h2>Report an Issue / Bug</h2>
+            <p style="color: #94a3b8; font-size: 0.95rem; margin-bottom: 15px;">Encountered any problem? Type the details below and click the button to send it directly to your email.</p>
+            <textarea id="problemInput" placeholder="Describe the problem or issue here..."></textarea>
+            <br>
+            <button class="report-btn" onclick="sendProblemToEmail()">Send Issue to My Email ✉️</button>
+        </div>
+
         <div class="tech-box">
             <h2>Technology Stack & Infrastructure</h2>
             <div class="tech-tags">
@@ -313,6 +327,22 @@
     </div>
 
     <script>
+        // Send problem details to email function
+        function sendProblemToEmail() {
+            const problemText = document.getElementById('problemInput').value.trim();
+            if(!problemText) {
+                alert('Please type the problem details first.');
+                return;
+            }
+            // Your email address
+            const myEmail = 'rayaneking20111@gmail.com'; 
+            const subject = encodeURIComponent('FitVision AI App - Bug / Issue Report');
+            const body = encodeURIComponent('Issue Details:\n\n' + problemText);
+            
+            window.location.href = `mailto:${myEmail}?subject=${subject}&body=${body}`;
+        }
+
+        // Audio toggle controller
         const audio = document.getElementById('relaxAudio');
         const btn = document.getElementById('musicToggleBtn');
 
