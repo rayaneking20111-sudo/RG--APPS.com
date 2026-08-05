@@ -57,14 +57,16 @@
             margin-bottom: 50px;
         }
         .app-gallery img {
-            width: 220px; /* Thumbnail size */
+            width: 220px;
+            height: auto;
             border-radius: 16px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.4);
             border: 2px solid #243044;
             transition: transform 0.3s ease, border-color 0.3s ease;
+            object-fit: cover;
         }
         .app-gallery img:hover {
-            transform: translateY(-10px) scale(1.05); /* Hover zoom effect */
+            transform: translateY(-10px) scale(1.05);
             border-color: #a3e635;
         }
 
@@ -208,9 +210,9 @@
 
         <h2 style="text-align: center; margin-bottom: 20px; color: #fff;">App Interface Overview</h2>
         <div class="app-gallery">
-            <img src="2991.jpg" alt="Screen 1">
-            <img src="2992.jpg" alt="Screen 2">
-            <img src="2993.jpg" alt="Screen 3">
+            <img src="images/2991.jpg" alt="Screen 1">
+            <img src="images/2992.jpg" alt="Screen 2">
+            <img src="images/2993.jpg" alt="Screen 3">
         </div>
 
         <div class="metrics">
