@@ -214,6 +214,11 @@
 </head>
 <body>
 
+    <audio id="bgAudio" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf7f6.mp3?filename=lofi-study-112191.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <div class="container">
         <header>
             <span class="badge">RG--APPS.COM Ecosystem Blueprint</span>
@@ -303,11 +308,38 @@
         </div>
 
         <div class="footer-action">
-            <a href="https://rayaneking20111-sudo.github.io/RG--APPS.com/" class="back-btn" target="_blank">Visit RG--APPS.COM</a>
+            <a href="https://RG--APPS.COM" class="back-btn">Visit RG--APPS.COM</a>
         </div>
     </div>
 
     <script>
+        // Robust Interaction-based Audio Trigger Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const audio = document.getElementById('bgAudio');
+            audio.volume = 0.5;
+
+            const startAudio = () => {
+                audio.play().then(() => {
+                    // Remove listeners once playback successfully initiates
+                    window.removeEventListener('click', startAudio);
+                    window.removeEventListener('touchstart', startAudio);
+                    window.removeEventListener('keydown', startAudio);
+                    window.removeEventListener('mousemove', startAudio);
+                }).catch(err => {
+                    console.log("Audio waiting for user gesture:", err);
+                });
+            };
+
+            // Bind to multiple potential user triggers
+            window.addEventListener('click', startAudio);
+            window.addEventListener('touchstart', startAudio);
+            window.addEventListener('keydown', startAudio);
+            window.addEventListener('mousemove', startAudio);
+
+            // Immediate silent attempt
+            audio.play().catch(() => {});
+        });
+
         // Interactive Star Rating Logic
         let selectedRating = 0;
         const stars = document.querySelectorAll('.star');
@@ -347,4 +379,3 @@
 
 </body>
 </html>
-
